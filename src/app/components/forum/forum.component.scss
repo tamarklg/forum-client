@@ -1,0 +1,51 @@
+.forum-component {
+  width: 50%;
+  margin: auto;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+
+  .message-list {
+    margin-bottom: 50px;
+    padding: 0 20px;
+
+    .message {
+      .text {
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 10px 0;
+        width: fit-content;
+        min-width: 200px;
+
+        button {
+          border: none;
+          background: transparent;
+          cursor: pointer;
+        }
+
+        span {
+          display: block;
+
+          &:first-child {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          &.date {
+            text-align: right;
+          }
+        }
+      }
+
+      .comments {
+        margin-left: auto;
+        width: fit-content;
+      }
+    }
+  }
+
+  input {
+    padding: 8px 16px;
+    width: calc(100% - 40px);
+  }
+}

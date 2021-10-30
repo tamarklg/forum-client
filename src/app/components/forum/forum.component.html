@@ -1,0 +1,36 @@
+<div class="header">
+  <div class="username">{{user?.lastName}} {{user?.firstName}}</div>
+  <button (click)="logout()">Logout</button>
+</div>
+
+<div class="forum-component">
+  <div class="message-list">
+    <div class="message" *ngFor="let message of messages">
+      <div class="text">
+        <span>From: {{message?.user?.lastName}} {{message?.user?.firstName}}
+          <button *ngIf="message?.user?.id === user?.id || user?.superuser"
+            (click)="delete(message.id)">X</button>
+        </span>
+        <span>{{message.text}}</span>
+        <span class="date">{{message.createdAt | date: 'dd/MM/yyyy'}}</span>
+      </div>
+
+      <div class="comments">
+        <div class="message" *ngFor="let comment of message.messages">
+          <div class="text">
+            <span>From: {{comment?.user?.lastName}} {{comment?.user?.firstName}}
+              <button *ngIf="comment?.user?.id === user?.id || user?.superuser"
+                (click)="delete(comment.id)">X</button>
+            </span>
+            <span>{{comment.text}}</span>
+            <span>{{comment.createdAt}}</span>
+          </div>
+        </div>
+      </div>
+
+      <input #comment type="text" placeholder="Text for new comment here…" (keyup.enter)="send(comment.value, message.id); comment.value = ''">
+    </div>
+  </div>
+
+  <input #msg type="text" placeholder="Text for new thread here…" (keyup.enter)="send(msg.value); msg.value = ''">
+</div>
